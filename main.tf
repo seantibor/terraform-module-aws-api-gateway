@@ -195,9 +195,7 @@ resource aws_api_gateway_deployment default {
   variables   = each.value["default_deployment_variables"]
 
   triggers = {
-    redeployment = sha1(join(",",
-      jsonencode(aws_api_gateway_integration.default),
-    ))
+    redeployment = sha1(jsonencode(aws_api_gateway_integration.default[*].id))
   }
 
   depends_on = [aws_api_gateway_method.default, aws_api_gateway_integration.default]
