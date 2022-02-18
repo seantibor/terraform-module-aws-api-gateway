@@ -5,7 +5,6 @@ terraform {
   }
 }
 
-provider "aws" {}
 
 locals {
 
